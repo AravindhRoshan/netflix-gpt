@@ -47,7 +47,7 @@ const LoginPage = () => {
               />
 
               <button className="p-2 m-2 rounded bg-red-600 w-full text-white font-semibold">
-                Sign In
+                Sign In now
               </button>
               <button className="text-white my-2 ">Forgot Password?</button>
             </form>
