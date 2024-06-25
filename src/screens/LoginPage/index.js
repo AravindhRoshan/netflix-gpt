@@ -56,6 +56,7 @@ const LoginPage = () => {
               <input
                 type="text"
                 placeholder="Name"
+                value={userName}
                 className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
               />
               <input
