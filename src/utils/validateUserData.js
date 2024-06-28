@@ -6,35 +6,39 @@ export const validateUserData = (
   setEmailError,
   setPasswordError
 ) => {
+  if (emailAddress === "") {
+    setEmailError("Enter Email ID");
+    return;
+  }
+  
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   const isEmailValid = emailRegex.test(emailAddress);
   const isPasswordValid = passwordRegex.test(password);
   if (!isEmailValid) {
-    setEmailError(true);
-    return "Enter a valid Email ID";
+    setEmailError("Enter a valid Email ID");
+    return
+  } else setEmailError(null);
+  if (password === "" ) {
+    setPasswordError("Enter Password");
+    return;
   }
   if (!isPasswordValid) {
-    setPasswordError(true);
     if (password.length < 8) {
-      return "Password is too short";
+      setPasswordError("Password is too short");
     } else if (!/[A-Z]/.test(password)) {
-      return "Password should contain at least one uppercase letter";
+      setPasswordError("Password should contain at least one uppercase letter");
     } else if (!/[a-z]/.test(password)) {
-      return "Password should contain at least one lowercase letter";
+      setPasswordError("Password should contain at least one lowercase letter");
     } else if (!/[0-9]/.test(password)) {
-      return "Password should contain at least one digit";
+      setPasswordError("Password should contain at least one digit");
     } else if (!/[!@#$%^&*]/.test(password)) {
-      return "Password should contain at least one special character";
-    } else {
-      return null;
+      setPasswordError(
+        "Password should contain at least one special character"
+      );
     }
-  }
-  return !isLogin
-    ? password === passwordCheck
-      ? null
-      : "Password Mismatch"
-    : null;
-  return null;
+  } else setPasswordError(null);
+  if (!isLogin)
+    if (password !== passwordCheck) setPasswordError("Password Mismatch");
 };

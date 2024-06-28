@@ -9,11 +9,11 @@ const LoginPage = () => {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
+  const [emailError, setEmailError] = useState(null);
+  const [passwordError, setPasswordError] = useState(null);
 
   const handleOnClickValidations = () => {
-    const message = validateUserData(
+    validateUserData(
       emailAddress,
       password,
       passwordCheck,
@@ -21,7 +21,6 @@ const LoginPage = () => {
       setEmailError,
       setPasswordError
     );
-    console.log("Validation result ------------------>", message);
   };
 
   return (
@@ -39,8 +38,8 @@ const LoginPage = () => {
       <div className="relative z-10">
         <LoginHeader />
         <div className="flex justify-center items-center h-screen">
-          <div className="w-1/4 bg-black bg-opacity-80 rounded ">
-            <h1 className="font-bold text-white text-4xl px-9 pb-3 my-3 pt-7">
+          <div className="w-1/4 bg-black bg-opacity-80 rounded flex flex-col">
+            <h1 className="font-bold text-white text-4xl p-2%">
               {isLogin ? "Sign In" : "Sign Up"}
             </h1>
 
@@ -51,20 +50,23 @@ const LoginPage = () => {
                 onSubmit={(e) => e.preventDefault()}
                 className="flex flex-col items-center mx-10 my-5 mt-8"
               >
-                <input
-                  type="text"
-                  placeholder="Email Address"
-                  value={emailAddress}
-                  onChange={(e) => {
-                    setEmailAddress(e.target.value);
-                  }}
-                  className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
-                />
-                {emailError && (
-                  <p className="text-red-500 text-sm -ml-8 sm:-ml-12 md:-ml-24 lg:-ml-48 -my-2">
-                    Came here
-                  </p>
-                )}
+                <div 
+                className="w-full">
+                  <input
+                    type="text"
+                    placeholder="Email Address"
+                    value={emailAddress}
+                    onChange={(e) => {
+                      setEmailAddress(e.target.value);
+                    }}
+                    className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
+                  />
+                  {emailError && (
+                    <p className="text-red-500 text-sm ">
+                      {emailError}
+                    </p>
+                  )}
+                </div>
 
                 <input
                   type="password"
@@ -75,6 +77,11 @@ const LoginPage = () => {
                   }}
                   className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
                 />
+                {passwordError && (
+                  <p className="text-red-500 text-sm -ml-8 sm:-ml-12 md:-ml-24 lg:-ml-48 -my-2">
+                    {passwordError}
+                  </p>
+                )}
 
                 <button
                   onClick={() => {
