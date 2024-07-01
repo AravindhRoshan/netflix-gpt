@@ -60,7 +60,7 @@ const LoginPage = () => {
                   className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
                 />
                 {emailError && (
-                  <p className="text-red-500 text-sm ">{emailError}</p>
+                  <p className="text-red-500 text-sm font-bold">{emailError}</p>
                 )}
 
                 <input
@@ -73,7 +73,7 @@ const LoginPage = () => {
                   className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
                 />
                 {passwordError && (
-                  <p className="text-red-500 text-sm -ml-8 sm:-ml-12 md:-ml-24 lg:-ml-48 -my-2">
+                  <p className="text-red-500 text-sm font-bold">
                     {passwordError}
                   </p>
                 )}
@@ -111,6 +111,9 @@ const LoginPage = () => {
                   }}
                   className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
                 />
+                {emailError && (
+                  <p className="text-red-500 text-sm font-bold">{emailError}</p>
+                )}
                 <input
                   type="password"
                   placeholder="Password"
@@ -120,6 +123,7 @@ const LoginPage = () => {
                   }}
                   className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
                 />
+                
                 <input
                   type="password"
                   placeholder="Confirm Password"
@@ -127,6 +131,11 @@ const LoginPage = () => {
                   onChange={(e) => setPasswordCheck(e.target.value)}
                   className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
                 />
+                {passwordError && (
+                  <p className="text-red-500 text-sm font-bold">
+                    {passwordError}
+                  </p>
+                )}
 
                 <button
                   onClick={() => {
