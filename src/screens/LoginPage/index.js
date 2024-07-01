@@ -39,7 +39,7 @@ const LoginPage = () => {
         <LoginHeader />
         <div className="flex justify-center items-center h-screen">
           <div className="w-1/4 bg-black bg-opacity-80 rounded flex flex-col">
-            <h1 className="font-bold text-white text-4xl p-2%">
+            <h1 className="font-bold text-white text-4xl pt-6 pl-9">
               {isLogin ? "Sign In" : "Sign Up"}
             </h1>
 
@@ -50,23 +50,18 @@ const LoginPage = () => {
                 onSubmit={(e) => e.preventDefault()}
                 className="flex flex-col items-center mx-10 my-5 mt-8"
               >
-                <div 
-                className="w-full">
-                  <input
-                    type="text"
-                    placeholder="Email Address"
-                    value={emailAddress}
-                    onChange={(e) => {
-                      setEmailAddress(e.target.value);
-                    }}
-                    className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
-                  />
-                  {emailError && (
-                    <p className="text-red-500 text-sm ">
-                      {emailError}
-                    </p>
-                  )}
-                </div>
+                <input
+                  type="text"
+                  placeholder="Email Address"
+                  value={emailAddress}
+                  onChange={(e) => {
+                    setEmailAddress(e.target.value);
+                  }}
+                  className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
+                />
+                {emailError && (
+                  <p className="text-red-500 text-sm ">{emailError}</p>
+                )}
 
                 <input
                   type="password"
