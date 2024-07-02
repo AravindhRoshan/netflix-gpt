@@ -1,4 +1,4 @@
-export const validateUserData = (
+export const validateUserInput = (
   emailAddress,
   password,
   passwordCheck,
@@ -10,7 +10,7 @@ export const validateUserData = (
     setEmailError("Enter Email ID");
     return;
   }
-  
+
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -18,9 +18,9 @@ export const validateUserData = (
   const isPasswordValid = passwordRegex.test(password);
   if (!isEmailValid) {
     setEmailError("Enter a valid Email ID");
-    return
+    return;
   } else setEmailError(null);
-  if (password === "" ) {
+  if (password === "") {
     setPasswordError("Enter Password");
     return;
   }

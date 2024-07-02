@@ -18,4 +18,24 @@
  - Dont create new pages for minimal changes
  - Learn it from chatGPT keep spamming questions
  - Use Formik(library) if there are multiple form items and validations
- - 
+ 
+
+# Installing Firebase into the app
+
+ - Create a project from firebase website
+ - Add hoisting if planning to host the website
+ - npm i firebase
+ - Add the config and export data in a file inside src/utils/firebase.js, exporting is important
+ - for deploying 
+    -npm install -g firebase-tools
+    -firebase login
+    -firebase init 
+    -firebase deploy, inside build folder for create-react-app
+ - copy codes for sign in and log in from their docs for web page
+ - check for users from their page 
+
+
+# Installing Redux into the app
+
+ - npm i -D @reduxjs/toolkit
+ - npm i react-redux

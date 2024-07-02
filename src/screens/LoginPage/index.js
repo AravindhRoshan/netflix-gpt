@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import LoginHeader from "./components/Header";
 import { BACKGROUND_IMAGE_URL } from "../../utils/constants";
-import { validateUserData } from "../../utils/validateUserData";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { validateUserInput } from "./methods/validateUserInput";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [userName, setUserName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
@@ -13,7 +20,7 @@ const LoginPage = () => {
   const [passwordError, setPasswordError] = useState(null);
 
   const handleOnClickValidations = () => {
-    validateUserData(
+    validateUserInput(
       emailAddress,
       password,
       passwordCheck,
@@ -21,6 +28,38 @@ const LoginPage = () => {
       setEmailError,
       setPasswordError
     );
+    if (!emailError || !passwordError) {
+      if (isLogin) {
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, emailAddress, password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log("user----------->", user);
+            navigate("/browse");
+            // ...
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            setPasswordError(errorMessage);
+          });
+      } else {
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, emailAddress, password)
+          .then((userCredential) => {
+            // Signed up
+            const user = userCredential.user;
+            console.log("user----------->", user);
+            navigate("/browse");
+            // ...
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            setPasswordError(errorMessage);
+            // ..
+          });
+      }
+    }
   };
 
   return (
@@ -123,7 +162,7 @@ const LoginPage = () => {
                   }}
                   className="p-2 m-2 rounded w-full my-3 bg-transparent border border-gray-500 text-white"
                 />
-                
+
                 <input
                   type="password"
                   placeholder="Confirm Password"
