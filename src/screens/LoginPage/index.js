@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LoginHeader from "./components/Header";
+import LoginHeader from "../../components/Header/index";
 import { BACKGROUND_IMAGE_URL } from "../../utils/constants";
 import {
   getAuth,
