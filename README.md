@@ -12,6 +12,7 @@
  -We install react-browser-dom (npm i -D)
  -We make appRouter variable which is an array containing all the path details
  -We wrap everything inside RouterProvider 
+ -Have the authentication and routing inside the header only so it is accessable everywhere and easy to manage
 
 # Key Learnings in UI design of login form
  - Keep styling as same as possible for different pages so changes would be minimal

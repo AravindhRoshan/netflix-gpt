@@ -1,7 +1,12 @@
 import React from "react";
+import AppHeader from "../../components/Header";
 
 const LandingPage = () => {
-  return <div>LandingPage</div>;
+  return (
+    <>
+      <AppHeader />
+    </>
+  );
 };
 
 export default LandingPage;

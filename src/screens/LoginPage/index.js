@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import LoginHeader from "../../components/Header/index";
 import { BACKGROUND_IMAGE_URL } from "../../utils/constants";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { validateUserInput } from "./methods/validateUserInput";
-import { useNavigate } from "react-router-dom";
+import AppHeader from "../../components/Header/index";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../redux/userSlice";
 
 const LoginPage = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isLogin, setIsLogin] = useState(true);
   const [userName, setUserName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
@@ -36,8 +38,6 @@ const LoginPage = () => {
             // Signed in
             const user = userCredential.user;
             console.log("user----------->", user);
-            navigate("/browse");
-            // ...
           })
           .catch((error) => {
             const errorMessage = error.message;
@@ -49,8 +49,19 @@ const LoginPage = () => {
           .then((userCredential) => {
             // Signed up
             const user = userCredential.user;
+            updateProfile(user, {
+              displayName: userName,
+            })
+              .then(() => {
+                const { uid, email, displayName } = auth.currentUser;
+                dispatch(
+                  addUser({ uid: uid, email: email, displayName: displayName })
+                );
+              })
+              .catch((error) => {
+                setPasswordError(error.message);
+              });
             console.log("user----------->", user);
-            navigate("/browse");
             // ...
           })
           .catch((error) => {
@@ -75,7 +86,7 @@ const LoginPage = () => {
         <div className="absolute inset-0 bg-black opacity-40"></div>
       </div>
       <div className="relative z-10">
-        <LoginHeader />
+        <AppHeader />
         <div className="flex justify-center items-center h-screen">
           <div className="w-1/4 bg-black bg-opacity-80 rounded flex flex-col">
             <h1 className="font-bold text-white text-4xl pt-6 pl-9">
