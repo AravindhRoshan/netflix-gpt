@@ -40,3 +40,18 @@
 
  - npm i -D @reduxjs/toolkit
  - npm i react-redux
+
+
+# TMDB API
+
+ - signed in to get access token
+ - read docs and got fetch API syntax
+
+
+
+# Why API calls happens twice?
+ - Its because of the react strict mode in the main page
+ - React does extra rendering of the components to check for some inconsistency between our calls, this happens only in development mode
+ - Throws error if any inconsistency in the rendering cycle
+
+ 

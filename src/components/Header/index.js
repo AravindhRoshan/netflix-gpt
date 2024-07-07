@@ -11,25 +11,18 @@ const AppHeader = () => {
   const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    console.log("1.Came in Useeffect------------------->");
     const unscubscribe = onAuthStateChanged(auth, (user) => {
-      console.log("2.Came in Auth------------------->");
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
         navigate("/browse");
-        console.log("3.User came from api");
       } else {
         dispatch(removeUser());
         navigate("/");
-        console.log("4.User not came from api");
       }
     });
-    console.log("5.Came out Auth------------------->");
     // unscubscribe();
-    console.log("6.End------------------->");
     return () => {
-      console.log("7.Unmount inside------------------->");
       unscubscribe();
     };
   }, []);
