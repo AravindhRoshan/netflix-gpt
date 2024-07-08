@@ -3,9 +3,11 @@ import React from "react";
 const VideoTitle = (props) => {
   const { title, desc } = props;
   return (
-    <div className="py-[22%] px-10 absolute text-white bg-gradient-to-r from-black w-screen aspect-video">
-      <h1 className="text-4xl font-bold">{title}</h1>
-      <p className="text-xl py-4 w-2/5 mb-4">{desc}</p>
+    <div className=" px-10 absolute text-white bg-gradient-to-r from-black w-screen aspect-video">
+      <div className="mt-[22%]">
+        <h1 className="text-4xl font-bold">{title}</h1>
+        <p className="text-xl py-4 w-2/5 mb-4">{desc}</p>
+      </div>
       <div>
         <button className="bg-white text-black py-3 px-12 text-xl font-semibold rounded-md hover:opacity-70">
           Play

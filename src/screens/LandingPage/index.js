@@ -3,16 +3,17 @@ import AppHeader from "../../components/Header";
 import useNowPlayingMovies from "../../hooks/useNowPlayingMovies";
 import VideoContainer from "./components/VideoContainer/VideoContainer";
 import MovieListContainer from "./components/MovieListContainer/MovieListContainer";
+import useFetchMoviesDatas from "../../hooks/useFetchMoviesDatas";
 
 const LandingPage = () => {
-  useNowPlayingMovies();
+  // useNowPlayingMovies();
+  useFetchMoviesDatas();
 
   return (
     <>
-      <div className="flex">
+      <div className="flex flex-col">
         <div className="z-10">
-
-        <AppHeader />
+          <AppHeader />
         </div>
         <VideoContainer />
         <MovieListContainer />
