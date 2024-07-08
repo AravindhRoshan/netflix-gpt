@@ -40,6 +40,10 @@
 
  - npm i -D @reduxjs/toolkit
  - npm i react-redux
+ - dispatch is for setting data, const dispatch = useDispatch()
+ - dispatch(reducerName(dataToSet));
+ - selector is for getting data, const selector = useSelector()
+
 
 
 # TMDB API

@@ -36,7 +36,7 @@ const AppHeader = () => {
   };
   return (
     <div className="flex flex-row justify-between">
-      <div className="absolute w-screen bg-gradient-to-b from-black flex flex-row justify-between">
+      <div className="absolute w-screen bg-gradient-to-b from-black flex flex-row justify-between" >
         <img
           className="h-30 w-64 pl-5 pt-2"
           src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
