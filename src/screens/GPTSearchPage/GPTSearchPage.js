@@ -30,8 +30,8 @@ const GPTSearchPage = () => {
   );
 
   return (
-    <div>
-      <div className="absolute h-screen w-screen -z-10">
+    <div className="">
+      <div className=" h-screen w-screen -z-10 fixed">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -40,7 +40,7 @@ const GPTSearchPage = () => {
           }}
         >
           {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black opacity-60" />
+          <div className="absolute inset-0 bg-black opacity-70" />
         </div>
       </div>
       <div className="flex items-center flex-col ">
