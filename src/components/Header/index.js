@@ -4,7 +4,7 @@ import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../../redux/userSlice";
-import { updateGPTState } from "../../redux/GPTSlice";
+import { removeGPTState, updateGPTState } from "../../redux/GPTSlice";
 
 const AppHeader = () => {
   const navigate = useNavigate();
@@ -45,12 +45,20 @@ const AppHeader = () => {
   return (
     <div className="flex flex-row justify-between">
       <div className="absolute w-screen bg-gradient-to-b from-black flex flex-row justify-between">
-        <img
-          className="h-30 w-72 pl-5 pt-2"
-          src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-          alt="Logo"
-        />
-        {user && (
+        <button
+          onClick={() => {
+            dispatch(removeGPTState());
+            navigate("/browse");
+          }}
+        >
+          <img
+            className="h-30 w-72 pl-5 pt-2"
+            src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+            alt="Logo"
+          />
+        </button>
+
+        {user && !isGPTSearchPage && (
           <div className="flex flex-col items-center pt-9">
             <div className="flex flex-row  mr-10">
               <p className="font-medium text-white pr-3 text-xl">

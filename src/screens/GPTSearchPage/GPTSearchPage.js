@@ -1,10 +1,9 @@
 import React, { useRef } from "react";
 import { API_OPTIONS, BACKGROUND_IMAGE_URL } from "../../utils/constants";
-import { current } from "@reduxjs/toolkit";
 import MovieListCategories from "./components/MovieListCategories";
-import { data } from "autoprefixer";
 import { useDispatch, useSelector } from "react-redux";
 import { addSearchResultMovies } from "../../redux/movieSlice";
+import AppHeader from "../../components/Header";
 
 const GPTSearchPage = () => {
   const inputText = useRef("hello");
@@ -12,6 +11,9 @@ const GPTSearchPage = () => {
   const handleInputText = () => {
     console.log(inputText.current.value);
     getSearchMovie(inputText.current.value);
+  };
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
   };
   const getSearchMovie = async (inputText) => {
     const movieResults = await fetch(
@@ -43,24 +45,27 @@ const GPTSearchPage = () => {
           <div className="absolute inset-0 bg-black opacity-70" />
         </div>
       </div>
-      <div className="flex items-center flex-col ">
-        <div>
-          <h1 className="text-white font-bold text-5xl py-10">GPT Search</h1>
-        </div>
-        <div className="flex w-4/12  justify-between ">
+      <AppHeader />
+      <div className="flex flex-col items-center px-4 py-10 md:px-8 lg:px-16">
+        <h1 className="text-white text-4xl font-bold mb-10 lg:text-5xl z-10">GPT Search</h1>
+
+        <form
+          className="flex flex-col w-full max-w-md space-y-4 md:flex-row md:space-y-0 md:space-x-4"
+          onSubmit={handleFormSubmit}
+        >
           <input
-            className="h-12 w-[300px] rounded-md p-3"
+            className="h-12 w-full rounded-md p-3 text-black md:w-2/3"
             ref={inputText}
             placeholder="What would you like to watch today?"
             type="text"
           />
           <button
-            className="bg-red-500 h-12 w-24 rounded-md p-1 text-white font-medium text-md"
+            className="bg-red-500 h-12 w-full rounded-md p-1 font-medium text-md text-white md:w-1/3"
             onClick={handleInputText}
           >
             Search
           </button>
-        </div>
+        </form>
       </div>
       <div>
         <MovieListCategories

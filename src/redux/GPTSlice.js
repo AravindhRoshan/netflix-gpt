@@ -9,9 +9,12 @@ const GPTSlice = createSlice({
     updateGPTState: (state, action) => {
       state.isGPTSearchPage = true;
     },
+    removeGPTState: (state, action) => {
+      state.isGPTSearchPage = false;
+    },
   },
 });
 
-export const { updateGPTState } = GPTSlice.actions;
+export const { updateGPTState, removeGPTState } = GPTSlice.actions;
 
 export default GPTSlice.reducer;
