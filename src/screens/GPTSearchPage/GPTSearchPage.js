@@ -46,7 +46,7 @@ const GPTSearchPage = () => {
         </div>
       </div>
       <AppHeader />
-      <div className="flex flex-col items-center px-4 py-10 md:px-8 lg:px-16">
+      <div className="flex flex-col items-center px-4 py-10 md:px-8 lg:px-16 mt-20">
         <h1 className="text-white text-4xl font-bold mb-10 lg:text-5xl z-10">GPT Search</h1>
 
         <form
