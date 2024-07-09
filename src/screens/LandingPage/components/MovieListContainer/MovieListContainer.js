@@ -8,7 +8,7 @@ const MovieListContainer = () => {
   return (
     movieData && (
       <div className="bg-black z-20">
-        <div className=" z-20 -mt-64">
+        <div className=" z-20 -mt-56">
           <MovieListCategories
             title={"Now Playing"}
             movieData={movieData.nowPlayingMovies}

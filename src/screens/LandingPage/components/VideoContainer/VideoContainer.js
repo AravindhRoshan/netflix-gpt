@@ -10,7 +10,7 @@ const VideoContainer = () => {
   const mainMovie = movies[randomIndex];
   console.log("mainMovie-------------------->", mainMovie);
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <VideoTitle title={mainMovie.original_title} desc={mainMovie.overview} />
       <VideoBackground movieID={mainMovie.id} />
     </div>

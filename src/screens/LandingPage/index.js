@@ -10,7 +10,7 @@ const LandingPage = () => {
   return (
     <>
       <div className="flex flex-col">
-        <div className="z-10">
+        <div className="z-20">
           <AppHeader />
         </div>
         <VideoContainer />
